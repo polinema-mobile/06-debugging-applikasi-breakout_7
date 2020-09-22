@@ -74,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void getAngkaMasukan(){
         //TODO 01 Buatlah kode program untuk mengambil nilai input dari edit text
-         sAngkaPertama = edit_text_angka_pertama.getText().toString();
-         angka_pertama = Integer.parseInt(sAngkaPertama);
+         angka_pertama = Integer.parseInt(edit_text_angka_pertama.getText().toString());
          angka_kedua = Integer.parseInt(edit_text_angka_kedua.getText().toString());
     }
 }
