@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText edit_text_angka_pertama,edit_text_angka_kedua;
 
     private int angka_pertama, angka_kedua;
+    private String sAngkaPertama, sAngkaKedua;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,24 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO 02 Buatlah kode program untuk menambahkan event klik dari tombol kali dan tombol bagi
 
+        button_bagi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getAngkaMasukan();
+                text_hasil.setText(Integer.toString(angka_pertama/angka_kedua));
+
+            }
+        });
+
+        button_kali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getAngkaMasukan();
+                text_hasil.setText(Integer.toString(angka_pertama*angka_kedua));
+
+            }
+        });
+
         //TODO 03 Gunakanlah Log Cat Untuk memperbaiki kesalahan program
 
         //TODO 04 Gunakanlah Debugger untuk mencari kesalahan program (program berjalan dengan baik namun hasilnya salah)
@@ -39,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getAngkaMasukan();
-                text_hasil.setText(angka_pertama+angka_kedua);
+                text_hasil.setText(Integer.toString(angka_pertama-angka_kedua));
 
             }
         });
@@ -48,12 +67,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getAngkaMasukan();
-                text_hasil.setText(angka_pertama+angka_kedua);
+                text_hasil.setText(Integer.toString(angka_pertama+angka_kedua));
             }
         });
     }
 
     public void getAngkaMasukan(){
         //TODO 01 Buatlah kode program untuk mengambil nilai input dari edit text
+         sAngkaPertama = edit_text_angka_pertama.getText().toString();
+         angka_pertama = Integer.parseInt(sAngkaPertama);
+         angka_kedua = Integer.parseInt(edit_text_angka_kedua.getText().toString());
     }
 }
