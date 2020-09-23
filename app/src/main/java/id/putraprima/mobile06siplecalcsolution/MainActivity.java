@@ -3,6 +3,7 @@ package id.putraprima.mobile06siplecalcsolution;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,12 +15,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText edit_text_angka_pertama,edit_text_angka_kedua;
 
     private int angka_pertama, angka_kedua;
-    private String sAngkaPertama, sAngkaKedua;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        boolean isEmptyFields = false;
+        boolean isInvalidDouble = false;
         button_kali = findViewById(R.id.button_kali);
         button_bagi = findViewById(R.id.button_bagi);
         button_kurang = findViewById(R.id.button_kurang);
@@ -54,12 +56,23 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO 05 Buatlah Validasi input agar masukan yang di isi oleh user tidak membuat program Force Close
 
+        String inputLFirst = edit_text_angka_pertama.getText().toString().trim();
+        String inputSecond = edit_text_angka_kedua.getText().toString().trim();
+        if (TextUtils.isEmpty(inputLFirst)) {
+            isEmptyFields = true;
+            edit_text_angka_pertama.setError("Diusahakan Angka");
+        }
+
+        if (TextUtils.isEmpty(inputSecond)) {
+            isEmptyFields = true;
+            edit_text_angka_kedua.setError("Diusahakan Angka");
+        }
+
         button_kurang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getAngkaMasukan();
                 text_hasil.setText(Integer.toString(angka_pertama-angka_kedua));
-
             }
         });
 
